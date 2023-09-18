@@ -702,6 +702,7 @@ GameObject:
   - component: {fileID: 374040442}
   - component: {fileID: 374040443}
   - component: {fileID: 374040444}
+  - component: {fileID: 374040445}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Ground
@@ -881,6 +882,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothRadius: 1
+--- !u!114 &374040445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374040426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc6cea77ae9a330a7b7b7b136bb31e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isIncreasing: 1
+  increment: 1
+  noiseFrequency: 0.1
+  nbOctaves: 1
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
