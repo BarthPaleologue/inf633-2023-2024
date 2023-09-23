@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GaussianBrush : TerrainBrush
+public class CircleBrush : TerrainBrush
 {
     [SerializeField] bool isIncreasing = true;
     [SerializeField] bool inverted = false;
@@ -17,12 +17,11 @@ public class GaussianBrush : TerrainBrush
 
                 float distanceToCenter = Mathf.Sqrt(xi * xi + zi * zi);
 
-                float gaussian = Mathf.Exp(-(distanceToCenter * distanceToCenter) / (2 * radius * radius));
-                if (inverted) gaussian = 1 - gaussian;
+                float circle = distanceToCenter < radius ? 1 : 0;
+                if(inverted) circle = 1 - circle;
+                circle *= increment;
 
-                float gaussianIncrement = gaussian * increment;
-
-                float newHeight = isIncreasing ? previousHeight + gaussianIncrement : previousHeight - gaussianIncrement;
+                float newHeight = isIncreasing ? previousHeight + circle : previousHeight - circle;
 
                 terrain.set(x + xi, z + zi, newHeight);
             }
