@@ -14,6 +14,7 @@ public class CustomTerrain : MonoBehaviour {
 
     [Header("Instance brush attributes")]
     public GameObject object_prefab = null;
+    public GameObject[] prefabs;
     public float min_scale = 0.8f;
     public float max_scale = 1.2f;
 
