@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlopeThresholdBrush : InstanceBrush
+public class SlopeThresholdInstanceBrush : InstanceBrush
 {
 
     [SerializeField] int nbInstances = 5;
