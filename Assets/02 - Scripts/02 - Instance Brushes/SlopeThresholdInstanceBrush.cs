@@ -6,7 +6,8 @@ public class SlopeThresholdInstanceBrush : InstanceBrush
 {
 
     [SerializeField] int nbInstances = 5;
-    [SerializeField] float slopeThreshold = 30f;
+    [SerializeField] float minSlope = 0.0f;
+    [SerializeField] float maxSlope = 30f;
 
     public override void draw(float x, float z)
     {
@@ -25,7 +26,7 @@ public class SlopeThresholdInstanceBrush : InstanceBrush
             Vector3 instancePosition = randomPositions[i];
             Vector3 normal = terrain.getNormal(instancePosition.x, instancePosition.z);
             float slope = Vector3.Angle(normal, Vector3.up);
-            if (slope < slopeThreshold)
+            if (slope > minSlope && slope < maxSlope)
             {
                 spawnObject(instancePosition.x, instancePosition.z);
             }

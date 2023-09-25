@@ -6,7 +6,7 @@ public class AltitudeThresholdInstanceBrush : InstanceBrush
 {
 
     [SerializeField] int nbInstances = 5;
-    [SerializeField] float minAltitude = 0.0f;
+    [SerializeField] float minAltitude = -1.0f;
     [SerializeField] float maxAltitude = 5.0f;
 
     public override void draw(float x, float z)
