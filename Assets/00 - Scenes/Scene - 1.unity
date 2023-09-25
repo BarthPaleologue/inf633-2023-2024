@@ -704,6 +704,9 @@ GameObject:
   - component: {fileID: 374040444}
   - component: {fileID: 374040445}
   - component: {fileID: 374040446}
+  - component: {fileID: 374040447}
+  - component: {fileID: 374040448}
+  - component: {fileID: 374040449}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Ground
@@ -786,6 +789,7 @@ MonoBehaviour:
   debug: {fileID: 1822113349}
   brush_radius: 10
   object_prefab: {fileID: 100000, guid: 6aab193b7693b5e4c9741f1917d2987c, type: 3}
+  prefabs: []
   min_scale: 0.8
   max_scale: 1.2
   cam: {fileID: 0}
@@ -915,6 +919,48 @@ MonoBehaviour:
   isIncreasing: 1
   inverted: 0
   increment: 1
+--- !u!114 &374040447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374040426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ad603395cd2238ea14e9867626ecb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nbInstances: 5
+  minSlope: 0
+  maxSlope: 30
+--- !u!114 &374040448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374040426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10931bb26d129e178e7f940b90dcac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nbInstances: 5
+  minAltitude: 0
+  maxAltitude: 5
+--- !u!114 &374040449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374040426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b6ed9c43b152b9cb587c375dfe7229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
