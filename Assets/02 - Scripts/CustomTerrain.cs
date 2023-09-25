@@ -14,6 +14,7 @@ public class CustomTerrain : MonoBehaviour {
 
     [Header("Instance brush attributes")]
     public GameObject object_prefab = null;
+    public GameObject[] prefabs;
     public float min_scale = 0.8f;
     public float max_scale = 1.2f;
 
@@ -190,6 +191,14 @@ public class CustomTerrain : MonoBehaviour {
     public TreeInstance getObject(int index) {
         return terrain_data.GetTreeInstance(index);
     }
+
+    public void DeleteObject(int index) {
+        TreeInstance[] objs = terrain_data.treeInstances;
+        List<TreeInstance> objs_list = new List<TreeInstance>(objs);
+        objs_list.RemoveAt(index);
+        terrain_data.treeInstances = objs_list.ToArray();
+    }
+
     // Returns an object (tree) location in grid space
     public Vector3 getObjectLoc(int index) {
         return getObjectLoc(terrain_data.GetTreeInstance(index));
