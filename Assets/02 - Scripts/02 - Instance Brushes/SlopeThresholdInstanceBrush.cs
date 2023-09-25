@@ -11,25 +11,15 @@ public class SlopeThresholdInstanceBrush : InstanceBrush
 
     public override void draw(float x, float z)
     {
-        Vector3[] randomPositions = new Vector3[nbInstances];
+        List<Vector2> randomPositions = Distribution.UniformInSquare(nbInstances, radius * 2, new Vector2(x, z));
 
-        for (int i = 0; i < nbInstances; i++)
+        foreach (Vector2 randomPosition in randomPositions)
         {
-            float instanceX = x + Random.Range(-radius, radius);
-            float instanceZ = z + Random.Range(-radius, radius);
-            float instanceY = terrain.get(instanceX, instanceZ);
-            randomPositions[i] = new Vector3(instanceX, instanceY, instanceZ);
-        }
-
-        for (int i = 0; i < nbInstances; i++)
-        {
-            Vector3 instancePosition = randomPositions[i];
-            Vector3 normal = terrain.getNormal(instancePosition.x, instancePosition.z);
+            Vector3 normal = terrain.getNormal(randomPosition.x, randomPosition.y);
             float slope = Vector3.Angle(normal, Vector3.up);
-            if (slope > minSlope && slope < maxSlope)
-            {
-                spawnObject(instancePosition.x, instancePosition.z);
-            }
+            if (slope < minSlope || slope > maxSlope) continue;
+
+            spawnObject(randomPosition.x, randomPosition.y);
         }
     }
 }
