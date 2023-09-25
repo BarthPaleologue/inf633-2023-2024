@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,8 @@ public class PerlinBrush : TerrainBrush
                 float heightAcc = 0.0f;
                 for(int i = 0; i < nbOctaves; i++)
                 {
-                    perlin += Mathf.PerlinNoise((x + xi) * noiseFrequency * (i + 1), (z + zi) * noiseFrequency * (i + 1)) / Mathf.Pow(2.0f, (float)i);
+                    float localFrequency = noiseFrequency * Mathf.Pow(2.0f, (float)i);
+                    perlin += Mathf.PerlinNoise((x + xi) * localFrequency, (z + zi) * localFrequency) / Mathf.Pow(2.0f, (float)i);
                     heightAcc += 1.0f / Mathf.Pow(2.0f, (float)i);
                 }
                 perlin /= heightAcc;
