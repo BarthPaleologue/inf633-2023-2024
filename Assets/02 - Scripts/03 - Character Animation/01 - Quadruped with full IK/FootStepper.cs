@@ -103,9 +103,9 @@ public class FootStepper : MonoBehaviour
 
         // START TODO ###################
 
-        Vector3 raycastOrigin = homeTransform.position + overshootVector + Vector3.up * 0.5f;
+        Vector3 raycastOrigin = homeTransform.position + overshootVector + Vector3.up * 5f;
 
-        if (Physics.Raycast(raycastOrigin, Vector3.down, out RaycastHit hit, 5f, groundRaycastMask))
+        if (Physics.Raycast(raycastOrigin, Vector3.down, out RaycastHit hit, 10f, groundRaycastMask))
         {
             endNormal = hit.normal;
             endPos = hit.point;
