@@ -173,7 +173,7 @@ public class QuadrupedProceduralMotion : MonoBehaviour
 
         hips.position = transform.position + Vector3.up * (posHit.y + 0.7f);
         hips.rotation = Quaternion.RotateTowards(hips.rotation, Quaternion.FromToRotation(transform.up, normalTerrain) * transform.rotation, 1f);
-        
+
         // END TODO ###################
     }
 

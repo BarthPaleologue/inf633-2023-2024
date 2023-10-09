@@ -164,7 +164,9 @@ public class FootStepper : MonoBehaviour
 
             // START TODO ###################
 
-            transform.position = Vector3.Lerp(startPos, endPos, normalizedTime);
+            // double lerp idea comes from https://catlikecoding.com/unity/tutorials/curves-and-splines/
+            var intermediatePoint = startPos + (endPos - startPos) * 0.5f + Vector3.up * 0.5f;
+            transform.position = Vector3.Lerp(Vector3.Lerp(startPos, intermediatePoint, normalizedTime), Vector3.Lerp(intermediatePoint, endPos, normalizedTime), normalizedTime);
 
             // END TODO ###################
 
