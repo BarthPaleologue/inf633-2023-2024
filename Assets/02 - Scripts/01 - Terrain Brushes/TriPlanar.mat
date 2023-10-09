@@ -113,8 +113,8 @@ Material:
     - _UseUIAlphaClip: 0
     - _ZWrite: 1
     - _blend_sharpness: 8
-    - _blend_sharpness_top: 4
-    - _perlinScale: 100
+    - _blend_sharpness_top: 2
+    - _perlinScale: 30
     - _tiling: 0.05
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
