@@ -11,14 +11,25 @@ public class CapsuleAutoController : MonoBehaviour {
     protected CustomTerrain cterrain;
     protected float width, height;
 
+    public bool canGoForward = false;
+
     void Start() {
         terrain = Terrain.activeTerrain;
         cterrain = terrain.GetComponent<CustomTerrain>();
         width = terrain.terrainData.size.x;
         height = terrain.terrainData.size.z;
+
+        canGoForward = false;
     }
 
     void Update() {
+        if(!canGoForward) return;
+
+        Transform tfm = transform;
+        tfm.position = getNextPos();
+    }
+
+    public Vector3 getNextPos() {
         Vector3 scale = terrain.terrainData.heightmapScale;
         Transform tfm = transform;
         Vector3 v = tfm.rotation * Vector3.forward * max_speed;
@@ -32,6 +43,6 @@ public class CapsuleAutoController : MonoBehaviour {
         else if (loc.z > height)
             loc.z -= height;
         loc.y = cterrain.getInterp(loc.x/scale.x, loc.z/scale.z);
-        tfm.position = loc;
+        return loc;
     }
 }

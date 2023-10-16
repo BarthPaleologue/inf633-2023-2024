@@ -13,6 +13,7 @@ public class Animal : MonoBehaviour
     public float swapStrength = 10.0f;
     public float mutateStrength = 0.5f;
     public float maxAngle = 10.0f;
+    public float maxSlopeAngle = 0.1f;
 
     [Header("Energy parameters")]
     public float maxEnergy = 10.0f;
@@ -111,6 +112,18 @@ public class Animal : MonoBehaviour
         // 3. Act using actuators.
         float angle = (output[0] * 2.0f - 1.0f) * maxAngle;
         tfm.Rotate(0.0f, angle, 0.0f);
+
+        // Terrain slope handling
+        CapsuleAutoController controller = GetComponent<CapsuleAutoController>();
+        Vector3 nextPos = controller.getNextPos();
+        float terrainSlope = Mathf.Abs(nextPos.y - tfm.position.y);
+        Debug.Log(terrainSlope);
+        if (terrainSlope > maxSlopeAngle) {
+            controller.canGoForward = false;
+        }
+        else {
+            controller.canGoForward = true;
+        }
     }
 
     /// <summary>
