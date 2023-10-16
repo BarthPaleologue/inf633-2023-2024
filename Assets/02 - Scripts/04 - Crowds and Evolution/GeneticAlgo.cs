@@ -21,6 +21,8 @@ public class GeneticAlgo : MonoBehaviour
     protected float width;
     protected float height;
 
+    [SerializeField] float slopeGrassThreshold = 0.7f;
+
     void Start()
     {
         // Retrieve terrain.
@@ -48,7 +50,7 @@ public class GeneticAlgo : MonoBehaviour
         {
             animals.Add(makeAnimal());
         }
-        customTerrain.debug.text = "N° animals: " + animals.Count.ToString();
+        customTerrain.debug.text = "Nï¿½ animals: " + animals.Count.ToString();
 
         // Update grass elements/food resources.
         updateResources();
@@ -60,14 +62,23 @@ public class GeneticAlgo : MonoBehaviour
     public void updateResources()
     {
         Vector2 detail_sz = customTerrain.detailSize();
+        Vector3 grid_sz = customTerrain.gridSize();
         int[,] details = customTerrain.getDetails();
         currentGrowth += vegetationGrowthRate;
         while (currentGrowth > 1.0f)
         {
             int x = (int)(UnityEngine.Random.value * detail_sz.x);
             int y = (int)(UnityEngine.Random.value * detail_sz.y);
+
+            float slope = customTerrain.getSteepness((float)x * grid_sz.x / detail_sz.x, (float)y * grid_sz.z / detail_sz.y);
+            if (Mathf.Abs(slope) >= slopeGrassThreshold)
+            {
+                continue;
+            }
+
             details[y, x] = 1;
             currentGrowth -= 1.0f;
+
         }
         customTerrain.saveDetails();
     }

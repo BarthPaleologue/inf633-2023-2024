@@ -87,9 +87,6 @@ public class FabricIKQuadruped : MonoBehaviour
             bones[i] = current;
             startingBoneRotation[i] = current.rotation;
 
-            // bones[i] = ...
-            // startingBoneRotation[i] = ...
-
             // END TODO ###################
 
             /*

@@ -171,8 +171,8 @@ public class QuadrupedProceduralMotion : MonoBehaviour
 
         // START TODO ###################
 
-        // hips.position = ...
-        // hips.rotation = ...
+        hips.position = transform.position + Vector3.up * (posHit.y + 0.7f);
+        hips.rotation = Quaternion.RotateTowards(hips.rotation, Quaternion.FromToRotation(transform.up, normalTerrain) * transform.rotation, 1f);
 
         // END TODO ###################
     }
@@ -233,10 +233,12 @@ public class QuadrupedProceduralMotion : MonoBehaviour
 
         // START TODO ###################
 
-        // goalWorldLookDir = ...
-        // goalLocalLookDir = ...
+        goalWorldLookDir = goal.position - headBone.position;
+        goalLocalLookDir = headBone.parent.InverseTransformDirection(goalWorldLookDir);
 
-        Quaternion targetLocalRotation = Quaternion.identity; // Change!
+        Debug.DrawRay(headBone.position, goalWorldLookDir, Color.red);
+
+        Quaternion targetLocalRotation = Quaternion.RotateTowards(Quaternion.LookRotation(Vector3.forward), Quaternion.LookRotation(goalLocalLookDir), angleHeadLimit);
 
         // END TODO ###################
 
