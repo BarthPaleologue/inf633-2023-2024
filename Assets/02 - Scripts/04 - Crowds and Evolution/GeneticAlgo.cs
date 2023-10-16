@@ -14,10 +14,15 @@ public class GeneticAlgo : MonoBehaviour
     [Header("Dynamic elements")]
     public float vegetationGrowthRate = 1.0f;
     public float currentGrowth;
-
     private List<GameObject> animals;
+    [UPyPlot.UPyPlotController.UPyProbe]
+    private float animalNum;
     protected Terrain terrain;
     protected CustomTerrain customTerrain;
+
+    [UPyPlot.UPyPlotController.UPyProbe]
+    private float grassNum;
+    private float grassTotal;
     protected float width;
     protected float height;
 
@@ -39,6 +44,7 @@ public class GeneticAlgo : MonoBehaviour
             GameObject animal = makeAnimal();
             animals.Add(animal);
         }
+        grassTotal = customTerrain.detailSize()[0] * customTerrain.detailSize()[1];
     }
 
     void Update()
@@ -48,7 +54,9 @@ public class GeneticAlgo : MonoBehaviour
         {
             animals.Add(makeAnimal());
         }
-        customTerrain.debug.text = "N° animals: " + animals.Count.ToString();
+        grassNum = (float)customTerrain.getDetailCoverage();
+        animalNum = (float)animals.Count;
+        customTerrain.debug.text = "No animals: " + animalNum + "\nGrass coverage: " + grassNum + "/" + grassTotal;
 
         // Update grass elements/food resources.
         updateResources();
@@ -67,6 +75,7 @@ public class GeneticAlgo : MonoBehaviour
             int x = (int)(UnityEngine.Random.value * detail_sz.x);
             int y = (int)(UnityEngine.Random.value * detail_sz.y);
             details[y, x] = 1;
+            customTerrain.detailCoverageIncre(1);
             currentGrowth -= 1.0f;
         }
         customTerrain.saveDetails();
