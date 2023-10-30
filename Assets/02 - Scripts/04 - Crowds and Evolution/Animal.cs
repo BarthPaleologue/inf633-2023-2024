@@ -86,6 +86,7 @@ public class Animal : MonoBehaviour
             // Eat (remove) the grass and gain energy.
             details[dy, dx] = 0;
             energy += gainEnergy;
+            terrain.detailCoverageIncre(-1);
             if (energy > maxEnergy)
                 energy = maxEnergy;
 
