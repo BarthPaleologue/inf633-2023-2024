@@ -128,7 +128,10 @@ public class GeneticAlgo : MonoBehaviour
     public void removeAnimal(Animal animal)
     {
         animals.Remove(animal.transform.gameObject);
-        Destroy(animal.transform.gameObject);
+
+        // get component FabricIK in children
+        FabricIK[] ikComponents = animal.GetComponentsInChildren<FabricIK>();
+        DestroyImmediate(animal.transform.gameObject);
     }
 
 }

@@ -203,4 +203,10 @@ public class FootStepper : MonoBehaviour
         Gizmos.DrawLine(transform.position, homeTransform.position);
         Gizmos.DrawWireCube(homeTransform.position, Vector3.one * 0.1f);
     }
+
+    void Update() {
+        if(homeTransform == null) {
+            Destroy(gameObject);
+        }
+    }
 }

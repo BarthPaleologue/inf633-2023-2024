@@ -97,6 +97,7 @@ public class Animal : MonoBehaviour
         {
             energy = 0.0f;
             genetic_algo.removeAnimal(this);
+            return;
         }
 
         // Update the color of the animal as a function of the energy that it contains.
@@ -117,7 +118,7 @@ public class Animal : MonoBehaviour
         CapsuleAutoController controller = GetComponent<CapsuleAutoController>();
         Vector3 nextPos = controller.getNextPos();
         float terrainSlope = Mathf.Abs(nextPos.y - tfm.position.y);
-        Debug.Log(terrainSlope);
+
         if (terrainSlope > maxSlopeAngle) {
             controller.canGoForward = false;
         }
