@@ -137,7 +137,14 @@ public class Animal : MonoBehaviour
         } else {
             controller.canGoForward = true;
             if(motion != null) {
-                motion.goal.position = tfm.position + (nextPos - tfm.position).normalized * 15f + Vector3.up * 0.25f;
+                Vector3 horizontalDirection = new Vector3(nextPos.x, 0, nextPos.z) - new Vector3(tfm.position.x, 0, tfm.position.z);
+                Vector3 newGoalPosition = tfm.position + horizontalDirection.normalized * 15f;
+                
+                // find height of terrain at newGoalPosition
+                float y = terrain.getInterp(newGoalPosition.x / terrainSize.x, newGoalPosition.z / terrainSize.y);
+                newGoalPosition += Vector3.up * (y + 1.5f);
+
+                motion.goal.position = newGoalPosition;
             }
         }
     }
