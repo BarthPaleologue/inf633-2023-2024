@@ -7382,7 +7382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: {fileID: 7579036225401965139}
   turnSpeed: 150
-  moveSpeed: 3
+  moveSpeed: 7
   moveBackwardFactor: 0.66
   turnAcceleration: 4
   moveAcceleration: 2
@@ -7432,7 +7432,7 @@ MonoBehaviour:
   maxAngle: 10
   maxSlopeAngle: 0.1
   maxEnergy: 10
-  lossEnergy: 0.1
+  lossEnergy: 0.05
   gainEnergy: 10
   maxVision: 20
   stepAngle: 10

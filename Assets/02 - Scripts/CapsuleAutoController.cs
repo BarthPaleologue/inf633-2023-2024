@@ -26,7 +26,7 @@ public class CapsuleAutoController : MonoBehaviour {
         if(!canGoForward) return;
 
         Transform tfm = transform;
-        tfm.position = getNextPos() + Vector3.up * 0.5f;
+        //tfm.position = getNextPos();
     }
 
     public Vector3 getNextPos() {
@@ -42,7 +42,7 @@ public class CapsuleAutoController : MonoBehaviour {
             loc.z += height;
         else if (loc.z > height)
             loc.z -= height;
-        loc.y = cterrain.getInterp(loc.x/scale.x, loc.z/scale.z);
+        loc.y = cterrain.getInterp(loc.x/scale.x, loc.z/scale.z) /*+ 0.5f*/;
         return loc;
     }
 }

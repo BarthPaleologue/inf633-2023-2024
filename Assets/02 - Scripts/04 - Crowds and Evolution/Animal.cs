@@ -124,24 +124,20 @@ public class Animal : MonoBehaviour
         // Terrain slope handling
         CapsuleAutoController controller = GetComponent<CapsuleAutoController>();
         Vector3 nextPos = controller.getNextPos();
-        //float terrainSlope = Mathf.Abs(nextPos.y - tfm.position.y);
 
-        float realSlope = terrain.getSteepness(nextPos.x, nextPos.z);
-        //Debug.Log("Slope: " + realSlope);
-        //Debug.Log("Terrain slope: " + terrainSlope);
+        float terrainSlope = terrain.getSteepness(nextPos.x, nextPos.z);
 
         QuadrupedProceduralMotion motion = GetComponentInChildren<QuadrupedProceduralMotion>();
 
-        if (realSlope > maxSlopeAngle) {
+        if (terrainSlope > maxSlopeAngle) {
             controller.canGoForward = false;
             if(motion != null) {
                 motion.goal.position = tfm.position;
             }
-        }
-        else {
+        } else {
             controller.canGoForward = true;
             if(motion != null) {
-                motion.goal.position = nextPos;
+                motion.goal.position = tfm.position + (nextPos - tfm.position).normalized * 15f + Vector3.up * 0.25f;
             }
         }
     }
