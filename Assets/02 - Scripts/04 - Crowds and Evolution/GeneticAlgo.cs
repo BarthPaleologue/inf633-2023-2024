@@ -125,6 +125,11 @@ public class GeneticAlgo : MonoBehaviour
         }
 
         float y = customTerrain.getInterp(x / scale.x, z / scale.z);
+
+        if(y < customTerrain.waterLevel) {
+            return makeAnimal();
+        }
+
         return makeAnimal(new Vector3(x, y, z));
     }
 

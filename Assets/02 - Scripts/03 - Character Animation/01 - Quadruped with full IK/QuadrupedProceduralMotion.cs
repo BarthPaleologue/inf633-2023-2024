@@ -153,7 +153,7 @@ public class QuadrupedProceduralMotion : MonoBehaviour
         Vector3 raycastOrigin = groundChecker.position;
 
         // The ray information gives you where you hit and the normal of the terrain in that location.
-        if (Physics.Raycast(raycastOrigin, -transform.up, out RaycastHit hit, Mathf.Infinity))
+        if (Physics.Raycast(raycastOrigin, Vector3.down, out RaycastHit hit, Mathf.Infinity))
         {
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
@@ -171,8 +171,8 @@ public class QuadrupedProceduralMotion : MonoBehaviour
          */
 
         // START TODO ###################
-
-        hips.position = transform.position + Vector3.up * (posHit.y + 0.7f);
+//transform.position + Vector3.up * (posHit.y + 0.7f)
+        hips.position = new Vector3(transform.position.x, posHit.y + 0.7f, transform.position.z);
         hips.rotation = Quaternion.RotateTowards(hips.rotation, Quaternion.FromToRotation(transform.up, normalTerrain) * transform.rotation, 1f);
 
         // END TODO ###################

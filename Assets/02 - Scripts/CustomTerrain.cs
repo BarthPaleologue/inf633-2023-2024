@@ -9,6 +9,9 @@ public class CustomTerrain : MonoBehaviour
 
     public Text debug;
 
+    [SerializeField] private GameObject waterPlane;
+    public float waterLevel = 3.0f;
+
     [Header("Global brushes attributes")]
     [Range(1, 100)]
     public int brush_radius = 10;
@@ -83,6 +86,8 @@ public class CustomTerrain : MonoBehaviour
         saveDetails();
 
         cam = GameObject.FindGameObjectWithTag("SecondCamera").GetComponent<Camera>();
+
+        waterPlane.transform.position = new Vector3(terrain_size.x / 2, waterLevel, terrain_size.z / 2);
     }
 
     // Called once per frame
