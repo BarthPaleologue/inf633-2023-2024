@@ -116,6 +116,14 @@ public class GeneticAlgo : MonoBehaviour
         Vector3 scale = terrain.terrainData.heightmapScale;
         float x = UnityEngine.Random.value * width;
         float z = UnityEngine.Random.value * height;
+
+        // if slope is too high, try again
+        while (customTerrain.getSteepness(x, z) > slopeGrassThreshold)
+        {
+            x = UnityEngine.Random.value * width;
+            z = UnityEngine.Random.value * height;
+        }
+
         float y = customTerrain.getInterp(x / scale.x, z / scale.z);
         return makeAnimal(new Vector3(x, y, z));
     }
