@@ -5,7 +5,7 @@ using UnityEngine;
 public class QuadrupedProceduralMotion : MonoBehaviour
 {
     [Header("Goal")]
-    //public Transform goal = null; // The character will move towards this goal.
+    public Transform goal; // The character will move towards this goal.
 
     // Settings relative to the root motion.
     [Header("Root Motion Settings")]
@@ -59,6 +59,7 @@ public class QuadrupedProceduralMotion : MonoBehaviour
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
+        goal.SetParent(null);
         StartCoroutine(Gait());
         TailInitialize();
         BodyInitialize();
@@ -86,7 +87,7 @@ public class QuadrupedProceduralMotion : MonoBehaviour
     private void RootMotion()
     {
         // Get the vector towards the goal and projectected it on the plane defined by the normal transform.up.
-        Vector3 towardGoal = transform.forward; // goal.position - transform.position
+        Vector3 towardGoal = goal.position - transform.position;
         Vector3 towardGoalProjected = Vector3.ProjectOnPlane(towardGoal, transform.up);
 
         // Angles between the forward direction and the direction to the goal. 
@@ -233,7 +234,7 @@ public class QuadrupedProceduralMotion : MonoBehaviour
 
         // START TODO ###################
 
-        goalWorldLookDir = transform.forward; //goal.position - headBone.position;
+        goalWorldLookDir = goal.position - headBone.position;
         goalLocalLookDir = headBone.parent.InverseTransformDirection(goalWorldLookDir);
 
         Debug.DrawRay(headBone.position, goalWorldLookDir, Color.red);

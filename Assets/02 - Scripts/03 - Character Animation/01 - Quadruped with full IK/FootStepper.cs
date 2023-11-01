@@ -22,6 +22,8 @@ public class FootStepper : MonoBehaviour
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
+        // set unique name
+        gameObject.name = gameObject.name + System.Guid.NewGuid().ToString();
         // We put the steppers at the top of the hierarchy, to avoid other influences from the parent transforms and to see them better.
         transform.SetParent(null);
 

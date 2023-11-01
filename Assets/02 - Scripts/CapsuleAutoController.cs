@@ -26,7 +26,7 @@ public class CapsuleAutoController : MonoBehaviour {
         if(!canGoForward) return;
 
         Transform tfm = transform;
-        tfm.position = getNextPos();
+        tfm.position = getNextPos() + Vector3.up * 0.5f;
     }
 
     public Vector3 getNextPos() {

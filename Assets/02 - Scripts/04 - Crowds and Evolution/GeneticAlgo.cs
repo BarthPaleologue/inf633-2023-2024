@@ -100,6 +100,7 @@ public class GeneticAlgo : MonoBehaviour
     public GameObject makeAnimal(Vector3 position)
     {
         GameObject animal = Instantiate(animalPrefab, transform);
+        animal.name = "Animal" + System.Guid.NewGuid().ToString();
         animal.GetComponent<Animal>().Setup(customTerrain, this);
         animal.transform.position = position;
         animal.transform.Rotate(0.0f, UnityEngine.Random.value * 360.0f, 0.0f);
@@ -137,6 +138,15 @@ public class GeneticAlgo : MonoBehaviour
     public void removeAnimal(Animal animal)
     {
         animals.Remove(animal.transform.gameObject);
+
+        // if the animal has QuadrupedProceduralMotion, remove it and its goal
+        QuadrupedProceduralMotion motion = animal.GetComponentInChildren<QuadrupedProceduralMotion>();
+        if (motion != null)
+        {
+            Destroy(motion.goal.gameObject);
+            Destroy(motion);
+        }
+
         Destroy(animal.transform.gameObject);
 
         // get component FabricIK in children

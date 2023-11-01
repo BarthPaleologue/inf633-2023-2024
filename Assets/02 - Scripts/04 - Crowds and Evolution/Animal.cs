@@ -17,7 +17,7 @@ public class Animal : MonoBehaviour
 
     [Header("Energy parameters")]
     public float maxEnergy = 10.0f;
-    public float lossEnergy = 0.1f;
+    public float lossEnergy = 0.01f;
     public float gainEnergy = 10.0f;
     private float energy;
 
@@ -126,12 +126,20 @@ public class Animal : MonoBehaviour
         Vector3 nextPos = controller.getNextPos();
         float terrainSlope = Mathf.Abs(nextPos.y - tfm.position.y);
 
-        if (terrainSlope > maxSlopeAngle) {
+        QuadrupedProceduralMotion motion = GetComponentInChildren<QuadrupedProceduralMotion>();
+
+        /*if (terrainSlope > maxSlopeAngle) {
             controller.canGoForward = false;
+            if(motion != null) {
+                motion.goal.position = tfm.position;
+            }
         }
-        else {
+        else {*/
             controller.canGoForward = true;
-        }
+            if(motion != null) {
+                motion.goal.position = nextPos;
+            }
+        //}
     }
 
     /// <summary>
