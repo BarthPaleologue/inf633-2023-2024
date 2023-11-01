@@ -26,7 +26,12 @@ public class CapsuleAutoController : MonoBehaviour {
         if(!canGoForward) return;
 
         Transform tfm = transform;
-        //tfm.position = getNextPos();
+
+        // if there is no QuadrupedProceduralMotion, we move the capsule
+        if(GetComponentInChildren<QuadrupedProceduralMotion>() == null) {
+            tfm.position = getNextPos();
+            return;
+        }
     }
 
     public Vector3 getNextPos() {
@@ -42,7 +47,7 @@ public class CapsuleAutoController : MonoBehaviour {
             loc.z += height;
         else if (loc.z > height)
             loc.z -= height;
-        loc.y = cterrain.getInterp(loc.x/scale.x, loc.z/scale.z) /*+ 0.5f*/;
+        loc.y = cterrain.getInterp(loc.x/scale.x, loc.z/scale.z);
         return loc;
     }
 }
