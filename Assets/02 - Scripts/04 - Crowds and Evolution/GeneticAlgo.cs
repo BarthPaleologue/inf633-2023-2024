@@ -26,7 +26,7 @@ public class GeneticAlgo : MonoBehaviour
     protected float width;
     protected float height;
 
-    [SerializeField] float slopeGrassThreshold = 0.7f;
+    [SerializeField] float slopeGrassThreshold = 30f;
 
     void Start()
     {
@@ -79,7 +79,8 @@ public class GeneticAlgo : MonoBehaviour
             int y = (int)(UnityEngine.Random.value * detail_sz.y);
 
             float slope = customTerrain.getSteepness((float)x * grid_sz.x / detail_sz.x, (float)y * grid_sz.z / detail_sz.y);
-            if (Mathf.Abs(slope) >= slopeGrassThreshold)
+            float height = customTerrain.getInterp((float)x * grid_sz.x / detail_sz.x, (float)y * grid_sz.z / detail_sz.y);
+            if (Mathf.Abs(slope) >= slopeGrassThreshold || height < customTerrain.waterLevel)
             {
                 continue;
             }

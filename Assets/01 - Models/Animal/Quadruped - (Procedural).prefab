@@ -7385,9 +7385,9 @@ MonoBehaviour:
   moveSpeed: 7
   moveBackwardFactor: 0.66
   turnAcceleration: 4
-  moveAcceleration: 2
+  moveAcceleration: 3
   minDistToGoal: 4.5
-  maxDistToGoal: 6
+  maxDistToGoal: 5
   hips: {fileID: 8107060311549103564}
   heightAcceleration: 1
   constantHipsPosition: {x: 0, y: 0, z: 0}
@@ -7430,7 +7430,7 @@ MonoBehaviour:
   swapStrength: 10
   mutateStrength: 0.5
   maxAngle: 10
-  maxSlopeAngle: 0.1
+  maxSlopeAngle: 50
   maxEnergy: 10
   lossEnergy: 0.05
   gainEnergy: 10

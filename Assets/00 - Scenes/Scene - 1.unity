@@ -1061,7 +1061,7 @@ MonoBehaviour:
     type: 3}
   vegetationGrowthRate: 1
   currentGrowth: 0
-  slopeGrassThreshold: 1
+  slopeGrassThreshold: 30
 --- !u!114 &374040441
 MonoBehaviour:
   m_ObjectHideFlags: 0

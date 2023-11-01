@@ -13,7 +13,7 @@ public class Animal : MonoBehaviour
     public float swapStrength = 10.0f;
     public float mutateStrength = 0.5f;
     public float maxAngle = 10.0f;
-    public float maxSlopeAngle = 0.1f;
+    public float maxSlopeAngle = 30f;
 
     [Header("Energy parameters")]
     public float maxEnergy = 10.0f;
