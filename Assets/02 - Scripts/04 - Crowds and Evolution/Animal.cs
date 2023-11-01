@@ -45,6 +45,8 @@ public class Animal : MonoBehaviour
     // Renderer.
     private Material mat = null;
 
+    private AnimalUI animalUI;
+
     void Start()
     {
         // Network: 1 input per receptor, 1 output per actuator.
@@ -58,6 +60,8 @@ public class Animal : MonoBehaviour
         MeshRenderer renderer = GetComponentInChildren<MeshRenderer>();
         if (renderer != null)
             mat = renderer.material;
+
+        animalUI = GetComponentInChildren<AnimalUI>();
     }
 
     void Update()
@@ -100,6 +104,8 @@ public class Animal : MonoBehaviour
             genetic_algo.removeAnimal(this);
             return;
         }
+
+        animalUI.setEnergyLevel(energy / maxEnergy);
 
         // Update the color of the animal as a function of the energy that it contains.
         if (mat != null)

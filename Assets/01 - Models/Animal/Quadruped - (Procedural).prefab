@@ -5225,7 +5225,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: 0.75, y: 0.3123458, z: 0.70899963}
   m_RotationAtRest: {x: 0, y: 40.00001, z: 0}
   m_TranslationOffsets:
-  - {x: 0.75, y: -0.645556, z: 0.05476761}
+  - {x: 0.75, y: -0.645556, z: 0.054771423}
   m_RotationOffsets:
   - {x: 4.619032, y: 40.156853, z: 3.8872268}
   m_AffectTranslationX: 1
@@ -5661,7 +5661,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: -0.9299927, y: 0.32199955, z: -1.0000038}
   m_RotationAtRest: {x: 0, y: -59.99992, z: 0}
   m_TranslationOffsets:
-  - {x: -0.9299927, y: -0.45629787, z: -1.643753}
+  - {x: -0.9299927, y: -0.4562974, z: -1.6437492}
   m_RotationOffsets:
   - {x: 3.0129874, y: -60.13759, z: -5.230716}
   m_AffectTranslationX: 1
@@ -5951,7 +5951,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: 0.93, y: 0.32199997, z: -1}
   m_RotationAtRest: {x: 0, y: 59.999973, z: 0}
   m_TranslationOffsets:
-  - {x: 0.9299927, y: -0.45629764, z: -1.6437492}
+  - {x: 0.9299927, y: -0.4562974, z: -1.6437454}
   m_RotationOffsets:
   - {x: 3.0129821, y: 60.137646, z: 5.2307177}
   m_AffectTranslationX: 1
@@ -6095,7 +6095,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: -0.75, y: 0.3123458, z: 0.70899963}
   m_RotationAtRest: {x: 0, y: -40.00001, z: 0}
   m_TranslationOffsets:
-  - {x: -0.75, y: -0.645556, z: 0.05476761}
+  - {x: -0.75, y: -0.645556, z: 0.054771423}
   m_RotationOffsets:
   - {x: 4.619032, y: -40.156853, z: -3.8872268}
   m_AffectTranslationX: 1
@@ -6381,37 +6381,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &8008706606261399487
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2340507789029602459}
-  m_Layer: 0
-  m_Name: goal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2340507789029602459
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8008706606261399487}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.88, z: 4.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8107060311549103610}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8107060311548940354
 GameObject:
   m_ObjectHideFlags: 0
@@ -7290,7 +7259,6 @@ Transform:
   m_Children:
   - {fileID: 8107060311549103564}
   - {fileID: 2954251902848506331}
-  - {fileID: 2340507789029602459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8107060311548940699
@@ -7305,7 +7273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54acf97cd5559e0419ee41af3ebd32a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 2340507789029602459}
+  goal: {fileID: 0}
   turnSpeed: 150
   moveSpeed: 3
   moveBackwardFactor: 0.66
