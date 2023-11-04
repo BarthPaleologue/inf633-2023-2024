@@ -22,7 +22,7 @@ public class GeneticAlgo : MonoBehaviour
 
     [UPyPlot.UPyPlotController.UPyProbe]
     private float grassNum;
-    private float grassTotal;
+    [SerializeField] float grassTotal = 1000f;
     protected float width;
     protected float height;
 
@@ -46,7 +46,6 @@ public class GeneticAlgo : MonoBehaviour
             GameObject animal = makeAnimal();
             animals.Add(animal);
         }
-        grassTotal = customTerrain.detailSize()[0] * customTerrain.detailSize()[1];
     }
 
     void Update()
@@ -73,7 +72,7 @@ public class GeneticAlgo : MonoBehaviour
         Vector3 grid_sz = customTerrain.gridSize();
         int[,] details = customTerrain.getDetails();
         currentGrowth += vegetationGrowthRate;
-        while (currentGrowth > 1.0f)
+        while (currentGrowth > 1.0f && customTerrain.getDetailCoverage() < grassTotal)
         {
             int x = (int)(UnityEngine.Random.value * detail_sz.x);
             int y = (int)(UnityEngine.Random.value * detail_sz.y);

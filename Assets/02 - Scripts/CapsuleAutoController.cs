@@ -18,8 +18,6 @@ public class CapsuleAutoController : MonoBehaviour {
         cterrain = terrain.GetComponent<CustomTerrain>();
         width = terrain.terrainData.size.x;
         height = terrain.terrainData.size.z;
-
-        canGoForward = false;
     }
 
     void Update() {

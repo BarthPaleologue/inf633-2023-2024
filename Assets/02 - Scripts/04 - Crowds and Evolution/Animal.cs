@@ -129,7 +129,7 @@ public class Animal : MonoBehaviour
 
         QuadrupedProceduralMotion motion = GetComponentInChildren<QuadrupedProceduralMotion>();
 
-        if (terrainSlope > maxSlopeAngle) {
+        if (terrainSlope > maxSlopeAngle || nextPos.y < terrain.waterLevel) {
             controller.canGoForward = false;
             if(motion != null) {
                 motion.goal.position = tfm.position;
