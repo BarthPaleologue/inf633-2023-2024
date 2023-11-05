@@ -150,7 +150,7 @@ public class QuadrupedProceduralMotion : MonoBehaviour
     private void RootAdaptation()
     {
         // Origin of the ray.
-        Vector3 raycastOrigin = groundChecker.position;
+        Vector3 raycastOrigin = groundChecker.position + Vector3.up * 100f;
 
         // The ray information gives you where you hit and the normal of the terrain in that location.
         if (Physics.Raycast(raycastOrigin, Vector3.down, out RaycastHit hit, Mathf.Infinity))
