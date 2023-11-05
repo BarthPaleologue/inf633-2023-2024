@@ -7434,6 +7434,9 @@ MonoBehaviour:
   maxEnergy: 10
   lossEnergy: 0.05
   gainEnergy: 10
+  maxAge: 100
+  age: 0
+  ageRate: 0.1
   maxVision: 20
   stepAngle: 10
   nEyes: 5

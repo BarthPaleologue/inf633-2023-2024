@@ -124,13 +124,13 @@ public class GeneticAlgo : MonoBehaviour
             z = UnityEngine.Random.value * height;
         }
 
-        float y = customTerrain.getInterp(x / scale.x, z / scale.z);
+        float y = customTerrain.getInterp(x, z);
 
         if(y < customTerrain.waterLevel) {
             return makeAnimal();
         }
 
-        return makeAnimal(new Vector3(x, y, z));
+        return makeAnimal(new Vector3(x, y + 0.5f, z));
     }
 
     /// <summary>

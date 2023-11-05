@@ -21,6 +21,11 @@ public class Animal : MonoBehaviour
     public float gainEnergy = 10.0f;
     private float energy;
 
+    [Header("Aging parameters")]
+    public float maxAge = 100.0f;
+    public float age = 0.0f;
+    public float ageRate = 0.1f;
+
     [Header("Sensor - Vision")]
     public float maxVision = 20.0f;
     public float stepAngle = 10.0f;
@@ -77,6 +82,16 @@ public class Animal : MonoBehaviour
             return;
         }
 
+        // Update age.
+        age += ageRate;
+        animalUI.setAgeLevel(age / maxAge);
+        if (age > maxAge)
+        {
+            age = maxAge;
+            genetic_algo.removeAnimal(this);
+            return;
+        }
+
         // Retrieve animal location in the heighmap
         int dx = (int)((tfm.position.x / terrainSize.x) * detailSize.x);
         int dy = (int)((tfm.position.z / terrainSize.y) * detailSize.y);
@@ -129,20 +144,30 @@ public class Animal : MonoBehaviour
 
         QuadrupedProceduralMotion motion = GetComponentInChildren<QuadrupedProceduralMotion>();
 
-        if (terrainSlope > maxSlopeAngle || nextPos.y < terrain.waterLevel) {
-            controller.canGoForward = false;
-            if(motion != null) {
-                motion.goal.position = tfm.position;
+        if (terrainSlope > maxSlopeAngle || nextPos.y < terrain.waterLevel)
+        {
+            if (motion != null)
+            {
+                // if the animal cannot go forward, we try to go backward
+                motion.goal.position = tfm.position - tfm.forward * 15f;
             }
-        } else {
+            else
+            {
+                controller.canGoForward = false;
+            }
+        }
+        else
+        {
             controller.canGoForward = true;
-            if(motion != null) {
+            if (motion != null)
+            {
                 Vector3 horizontalDirection = new Vector3(nextPos.x, 0, nextPos.z) - new Vector3(tfm.position.x, 0, tfm.position.z);
                 Vector3 newGoalPosition = tfm.position + horizontalDirection.normalized * 15f;
-                
+
                 // find height of terrain at newGoalPosition
-                float y = terrain.getInterp(newGoalPosition.x / terrainSize.x, newGoalPosition.z / terrainSize.y);
-                newGoalPosition += Vector3.up * (y + 1.5f);
+                float y = terrain.getInterp(newGoalPosition.x, newGoalPosition.z);
+                y = Mathf.Max(y, tfm.position.y);
+                newGoalPosition += Vector3.up * (y + 0.5f);
 
                 motion.goal.position = newGoalPosition;
             }
