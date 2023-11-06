@@ -19,7 +19,7 @@ namespace UPyPlot {
 		[Tooltip("Rate in seconds which to update plot data file with new values.")]
 		[SerializeField] private float interval = 0.1f; // How often to update the data in the plot data file.
 
-		[Range(2,1000)]
+		[Range(2,5000)]
 		[Tooltip("Maximum lines/history that the plot file should contain.")]
 		[SerializeField] private int maxSamples = 25;
 		private int currentSample = 0;

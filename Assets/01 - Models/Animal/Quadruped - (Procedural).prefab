@@ -7430,7 +7430,7 @@ MonoBehaviour:
   swapStrength: 10
   mutateStrength: 0.5
   maxAngle: 10
-  maxSlopeAngle: 40
+  maxSlopeAngle: 50
   maxEnergy: 10
   lossEnergy: 0.05
   gainEnergy: 10
